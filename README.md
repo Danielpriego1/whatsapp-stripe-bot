@@ -7,7 +7,7 @@ Bot de WhatsApp con pagos Stripe para Grupo Psi (IA Sora).
 - Node.js 18+
 - Cuenta en Stripe
 - WhatsApp Business Cloud API (Meta)
-- Proyecto en Supabase
+- Proyecto en InsForge (backend AI-native, alternativa a Supabase)
 
 ## Instalacion
 
@@ -49,6 +49,23 @@ pm2 startup
 
 Registra estas URLs en los dashboards de Stripe y Meta.
 
+## Backend: InsForge
+
+Este proyecto usa InsForge en lugar de Supabase porque expone la base de
+datos, autenticacion y storage mediante un SDK y un servidor MCP pensado
+para que agentes de IA (como Sora) puedan leer y escribir datos, crear
+tablas y operar el backend directamente, sin intervencion manual.
+
+Para conectar tu proyecto de InsForge, define en `.env`:
+
+```
+INSFORGE_URL=https://tu-proyecto.insforge.app
+INSFORGE_ANON_KEY=your-anon-key
+INSFORGE_API_KEY=your-api-key
+```
+
+Mas info: https://github.com/InsForge/insforge
+
 ## Estructura del proyecto
 
 ```
@@ -56,6 +73,6 @@ src/
   index.js      - Servidor Express principal
   stripe.js     - Integracion con Stripe (webhooks y payment links)
   whatsapp.js   - Integracion con WhatsApp Business Cloud API
-  supabase.js   - Cliente de Supabase y funciones de ordenes
+  insforge.js   - Cliente de InsForge y funciones de ordenes
   sora.js       - Logica del asistente Sora
 ```
