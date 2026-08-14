@@ -8,11 +8,11 @@
     "start": "node src/index.js",
     "dev": "node --watch src/index.js"
   },
-  "keywords": ["whatsapp", "stripe", "bot", "grupo-psi", "sora"],
+  "keywords": ["whatsapp", "stripe", "bot", "grupo-psi", "sora", "insforge"],
   "author": "Grupo Psi",
   "license": "MIT",
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
+    "@insforge/sdk": "^1.4.3",
     "axios": "^1.6.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
