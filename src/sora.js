@@ -1,6 +1,6 @@
 import { createPaymentLink } from './stripe.js';
 import { enviarMensaje } from './whatsapp.js';
-import { guardarOrden, confirmarPagoOrden } from './supabase.js';
+import { guardarOrden, confirmarPagoOrden } from './insforge.js';
 
 // Logica base de Sora (puedes expandir con IA despues)
 export async function soraResponder(from, texto) {
