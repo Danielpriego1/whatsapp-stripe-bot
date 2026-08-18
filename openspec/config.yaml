@@ -1,0 +1,55 @@
+# SDD config.yaml — whatsapp-stripe-bot
+schema: spec-driven
+
+context: |
+  Tech stack: Node.js v22 (ESM, "type": "module"), Express 4 webhook server, Stripe SDK 14,
+  axios, dotenv, @insforge/sdk (InsForge BaaS, project oss-project, API https://insforge.grupopsi.com).
+  Architecture: Webhook-driven WhatsApp bot (Meta Cloud API + Stripe) orchestrating InsForge
+  (database/auth/storage) for orders and payment confirmation; Sora agent logic in src/sora.js.
+  Testing: None configured — no test runner, linter, type checker, or formatter in package.json.
+  Style: Plain JavaScript (no framework/TS). Spanish comments and user-facing strings in source;
+  SDD artifacts default to English. AGENTS.md holds InsForge conventions (inserts take arrays,
+  auth.users(id)/auth.uid() in RLS, persist storage url+key).
+
+testing:
+  strict_tdd: false
+  reason: No test runner detected (no test script, no test framework deps, no CI).
+  runner:
+    command: "node --test"
+    framework: node:test (Node 22 built-in; none currently configured in package.json)
+  layers:
+    unit: false
+    integration: false
+    e2e: false
+  coverage:
+    available: false
+    command: null
+  quality:
+    linter: false
+    type_checker: false
+    formatter: false
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include sequence diagrams for webhook flows
+    - Document architecture decisions with rationale
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    guidelines:
+      - Follow existing code patterns
+      - Keep Spanish comments convention in source files
+    tdd: false
+    test_command: "node --test"
+  verify:
+    test_command: "node --test"
+    build_command: "node --check src/index.js"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
