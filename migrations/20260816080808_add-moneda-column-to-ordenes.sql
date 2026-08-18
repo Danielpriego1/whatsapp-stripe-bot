@@ -1,0 +1,1 @@
+ALTER TABLE ordenes ADD COLUMN moneda text NOT NULL DEFAULT 'mxn';
