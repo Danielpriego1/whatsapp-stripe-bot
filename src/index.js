@@ -1,9 +1,7 @@
+import 'dotenv/config';
 import express from 'express';
-import dotenv from 'dotenv';
 import stripeRoutes from './stripe.js';
 import whatsappRoutes from './whatsapp.js';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;

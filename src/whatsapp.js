@@ -6,6 +6,7 @@ const router = express.Router();
 
 const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN;
 const PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
+const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN;
 
 // ---------------------------------------------------------------------------
 // Dedupe de mensajes por message.id (Meta reintenta entregas fallidas).
@@ -125,7 +126,7 @@ router.get('/', (req, res) => {
   const token = req.query['hub_verify_token'];
   const challenge = req.query['hub_challenge'];
 
-  if (mode === 'subscribe' && token === 'mi_token_secreto') {
+  if (mode === 'subscribe' && VERIFY_TOKEN && token === VERIFY_TOKEN) {
     console.log('Webhook verificado por Meta');
     res.status(200).send(challenge);
   } else {
